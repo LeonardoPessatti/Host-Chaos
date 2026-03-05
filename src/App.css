@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    user-select: none;
+    outline: none;
+}
+
+html, body, #root {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    overflow: hidden !important;
+    width: 100%;
+    height: 100%;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+}
+
+.window,
+.macos-window {
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    background-color: rgba(25, 25, 25, 0.3);
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.titlebar {
+    height: 3.25rem;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.25rem;
+    -webkit-app-region: drag;
+    flex-shrink: 0;
+}
+
+.windows-titlebar {
+    -webkit-app-region: drag;
+}
+
+.windows-controls {
+    -webkit-app-region: no-drag;
+}
+
+.window-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    -webkit-app-region: no-drag;
+    pointer-events: none;
+}
+
+.window-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.window-content h1 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.window-content p {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+button, input, select, textarea {
+    border-radius: 7px;
+    cursor: default;
+    font-size: 14px;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    outline: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+button {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+a {
+    cursor: default;
+    outline: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.nettest-content {
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.85rem;
+    padding-top: 1rem;
+}
+
+.nettest-content > h1,
+.nettest-content > p {
+    text-align: center;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr 1fr auto;
+    gap: 0.6rem;
+    -webkit-app-region: no-drag;
+}
+
+.controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+}
+
+.controls input {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0.45rem 0.55rem;
+}
+
+.controls input:disabled {
+    opacity: 0.6;
+}
+
+.actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.action-button {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0.46rem 0.85rem;
+    min-width: 70px;
+}
+
+.action-button.primary {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.action-button:disabled {
+    opacity: 0.45;
+}
+
+.summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    -webkit-app-region: no-drag;
+}
+
+.tables-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    min-height: 0;
+    flex: 1;
+}
+
+.table-panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    gap: 0.35rem;
+}
+
+.table-panel h2 {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.table-wrap {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 7px;
+    overflow: auto;
+    -webkit-app-region: no-drag;
+    min-height: 0;
+    max-height: 160px;
+}
+
+.table-wrap.compact {
+    max-height: 130px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+th,
+td {
+    padding: 0.45rem 0.55rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+    white-space: nowrap;
+}
+
+td:last-child {
+    max-width: 380px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.empty {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 1rem;
+}
+
+.macos-footer {
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    flex-shrink: 0;
+    -webkit-user-select: none;
+    user-select: none;
+    position: relative;
+}
+
+.footer {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.macos-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 48rem) {
+    .titlebar {
+        height: 2.75rem;
+        padding: 0 1rem;
+    }
+
+    .window-content {
+        padding: 1rem;
+    }
+
+    .window-content h1 {
+        font-size: 1.2rem;
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        justify-content: flex-start;
+    }
+
+    .table-wrap {
+        max-height: 140px;
+    }
+
+    .table-wrap.compact {
+        max-height: 120px;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .window-content h1 {
+        color: rgba(0, 0, 0, 0.9);
+        text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+    }
+
+    .window-content p,
+    .controls label,
+    .summary,
+    .table-panel h2,
+    .window-title,
+    .macos-footer {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .controls input,
+    .table-wrap,
+    .action-button {
+        border-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .controls input {
+        background: rgba(255, 255, 255, 0.65);
+        color: rgba(0, 0, 0, 0.9);
+    }
+
+    thead {
+        background: rgba(255, 255, 255, 0.75);
+    }
+
+    table {
+        color: rgba(0, 0, 0, 0.82);
+    }
+
+    th,
+    td {
+        border-bottom-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .macos-footer::before {
+        background: rgba(0, 0, 0, 0.1);
+    }
+}
